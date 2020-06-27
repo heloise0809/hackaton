@@ -1,11 +1,17 @@
 import numpy as np
-#def allumettes(nbre, etages):
+
+def creer_pyramide():
+    pyramide = np.array([])
+    n=0
+    while(n != "q"):
+        n = int(input("Entrez le nombre d'allumettes souhaitez pour cette etage(entrez q pour stop):"))
+        ones=np.ones(n)
+        pyramide= np.concatenate((pyramide, ones), axis=0)
+        print(pyramide)
 
 
 if __name__ == '__main__':
-    #n=input("Entrez le nombre d'allumettes")
-    #etages = input("Entrez le nombre d'allumettes")
-
+    #creer_pyramide()
     pyramide = np.array([[1], [1, 1], [1, 1, 1]])
     for i in range(0, len(pyramide)):
         print pyramide[i]
