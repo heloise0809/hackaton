@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def creer_pyramide():
     pyramide = np.array([])
     n=0
@@ -9,22 +10,32 @@ def creer_pyramide():
         pyramide= np.concatenate((pyramide, ones), axis=0)
         print(pyramide)
 
-
-if __name__ == '__main__':
-    #creer_pyramide()
-    pyramide = np.array([[1], [1, 1], [1, 1, 1]])
+def afficher(pyramide):
     for i in range(0, len(pyramide)):
         print pyramide[i]
 
+if __name__ == '__main__':
+    joueur= True
+    pyramide = np.array([[1], [1, 1], [1, 1, 1]])
+    afficher(pyramide)
+
     while(len(pyramide) != 0):
-        ligne = input("Entrez le numero de ligne ")
+        if joueur == True:
+            nom_joueur = "nicolas"
+            joueur= False
+        else:
+            nom_joueur="sandy"
+            joueur= True
+
+
+        print("Au tour du joueur " + nom_joueur)
+        ligne = input("Entrez le numero de ligne: ")
         n = input("Entrez le nombre d'allumettes a supprimer: ")
 
 
         if n >= len(pyramide[ligne]):
             pyramide = np.delete(pyramide, ligne, axis=0)
-            for i in range(0, len(pyramide)):
-                print pyramide[i]
+            afficher(pyramide)
             continue
 
         # position du premier 1 a droite sur la ligne
@@ -37,19 +48,24 @@ if __name__ == '__main__':
             #si nombre d'allumettes restants > nbre allumettes a supprimer
             if n >= nbre_allumettes:
                 pyramide = np.delete(pyramide, ligne, axis=0)
-                for i in range(0, len(pyramide)):
-                    print pyramide[i]
+                afficher(pyramide)
                 break
             #si la derniere allumettes va etre supprime
             if pyramide[ligne][i]==1 and i==0:
                 pyramide = np.delete(pyramide, ligne, axis=0)
-                for i in range(0, len(pyramide)):
-                    print pyramide[i]
+                afficher(pyramide)
                 break
 
             pyramide[ligne][i]=0
             i=i-1
             n=n-1
 
-            for i in range(0, len(pyramide)):
-                print pyramide[i]
+        afficher(pyramide)
+
+    #affichage du resultat
+    if joueur == True:
+        nom_joueur = "nicolas"
+    else:
+        nom_joueur = "sandy"
+
+    print("Bravo " + nom_joueur)
