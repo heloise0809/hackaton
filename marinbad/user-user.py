@@ -23,7 +23,8 @@ if __name__ == '__main__':
 
         if n >= len(pyramide[ligne]):
             pyramide = np.delete(pyramide, ligne, axis=0)
-            print pyramide
+            for i in range(0, len(pyramide)):
+                print pyramide[i]
             continue
 
         # position du premier 1 a droite sur la ligne
@@ -36,17 +37,19 @@ if __name__ == '__main__':
             #si nombre d'allumettes restants > nbre allumettes a supprimer
             if n >= nbre_allumettes:
                 pyramide = np.delete(pyramide, ligne, axis=0)
-                print pyramide
+                for i in range(0, len(pyramide)):
+                    print pyramide[i]
                 break
             #si la derniere allumettes va etre supprime
             if pyramide[ligne][i]==1 and i==0:
                 pyramide = np.delete(pyramide, ligne, axis=0)
-                print pyramide
+                for i in range(0, len(pyramide)):
+                    print pyramide[i]
                 break
 
             pyramide[ligne][i]=0
             i=i-1
             n=n-1
 
-
-            print pyramide
+            for i in range(0, len(pyramide)):
+                print pyramide[i]
